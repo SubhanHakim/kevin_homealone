@@ -20,7 +20,7 @@ export const Navbar = () => {
             </div>
 
             <button className="bg-[#0B0E23] text-white px-6 py-2.5 rounded-full font-medium text-sm hover:opacity-90 transition-opacity">
-                Buy Now
+                <a href="https://pump.fun/coin/2iRcDWDrTJVpbDzjgmsAL7WatTQZEg9xkB3vDGzGpump">Buy Now</a>
             </button>
         </nav>
     );
