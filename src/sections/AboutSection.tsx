@@ -1,74 +1,108 @@
-import { StatsItem } from "../components/ui/StatsItem";
+import { useState } from "react";
+import logo from "../assets/logo.png";
+import dexscreenerIcon from "../assets/dexscreener.svg";
+import { Reveal } from "../components/utils/Reveal";
 
-export const AboutSection = () => (
-    <section className="bg-[#0B0E23] text-white pt-32 pb-20 relative mt-20">
-        {/* Curved Top */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 -translate-y-[98%]">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block h-[100px] w-full">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#0B0E23]"></path>
-            </svg>
-        </div>
+export const AboutSection = () => {
+    const [copied, setCopied] = useState(false);
+    const CA = "Coming Soon"; // Placeholder
 
-        <div className="max-w-6xl mx-auto px-6 mb-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                {/* About Image / Feature */}
-                <div className="relative group">
-                    <div className="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                    <div className="relative bg-gradient-to-br from-[#1A1B4B] to-[#0f1129] border border-white/10 p-6 rounded-3xl aspect-[4/3] flex items-center justify-center overflow-hidden">
-                        {/* Abstract Art Representation */}
-                        <div className="w-32 h-32 md:w-48 md:h-48 bg-gradient-to-tr from-cyan-400 to-blue-600 rounded-full blur-sm animate-pulse"></div>
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-                        {/* <img src="/api/placeholder/400/320" alt="About Visual" className="absolute inset-0 w-full h-full object-cover opacity-0" /> */}
-                        <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/5 backdrop-blur-md rounded-xl border border-white/10">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-500"></div>
-                                <div>
-                                    <p className="text-sm font-bold">The Origin Story</p>
-                                    <p className="text-xs text-gray-400">@KevinHomeAlone</p>
+    const handleCopy = () => {
+        navigator.clipboard.writeText(CA);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    return (
+        <section id="about" className="bg-[#0B0E23] text-white pt-32 pb-20 relative mt-20">
+            {/* Curved Top */}
+            <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 -translate-y-[98%]">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block h-[100px] w-full">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#0B0E23]"></path>
+                </svg>
+            </div>
+
+            <Reveal>
+                <div className="max-w-6xl mx-auto px-6 mb-20">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div className="relative group w-full max-w-sm mx-auto">
+                            {/* Main Image Container - Neo Brutalist Style */}
+                            <div className="relative bg-white border-2 border-[#1A1B4B] p-3 rounded-xl shadow-[6px_6px_0px_0px_rgba(11,14,35,1)] hover:shadow-[10px_10px_0px_0px_#3B82F6] hover:-translate-y-2 transition-all duration-300">
+                                <div className="relative rounded-lg overflow-hidden border border-[#1A1B4B]/20">
+                                    <img
+                                        src={logo}
+                                        alt="Kevin Logo"
+                                        className="w-full aspect-square object-cover"
+                                    />
+                                </div>
+
+                                {/* Floating Info Card - Neo Brutalist Style */}
+                                <div className="absolute -bottom-6 left-6 right-6 z-20">
+                                    <div className="bg-white border-2 border-[#1A1B4B] p-3 rounded-xl shadow-[4px_4px_0px_0px_rgba(11,14,35,1)] flex items-center gap-3">
+                                        {/* Pink K Icon */}
+                                        <div className="w-10 h-10 rounded-full bg-[#E056FD] border border-black flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                                            K
+                                        </div>
+
+                                        {/* Text Info */}
+                                        <div className="flex-1 min-w-0">
+                                            <h4 className="text-[#1A1B4B] font-bold text-base leading-tight font-mono uppercase tracking-tight truncate">The Origin</h4>
+                                            <p className="text-gray-500 text-xs font-bold truncate">@KevinHomeAlone</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* About Content */}
+                        <div className="space-y-8">
+                            <div>
+                                <h2 className="text-4xl md:text-5xl font-bold mb-4">Alone at Home, Under Observation</h2>
+                                <p className="text-gray-400 text-lg leading-relaxed">
+                                    Inspired by the moment when a house goes quiet and a child is left to think, prepare, and adapt. This project reinterprets that state not as comedy, but as awareness. The character is alone, but not helpless. Festive elements become signals, tools become symbols, and every pose feels like a recorded decision.
+                                </p>
+                            </div>
+
+                            {/* Socials & CA */}
+                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                {/* CA Box */}
+                                <div className="flex-1 bg-[#1A1B4B] border border-white/20 rounded-xl p-2 flex items-center justify-between gap-3 shadow-lg">
+                                    <div className="px-3 min-w-0">
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">CA (Pump.fun)</p>
+                                        <p className="text-sm text-white font-mono truncate">{CA}</p>
+                                    </div>
+                                    <button
+                                        onClick={handleCopy}
+                                        className="bg-[#3B82F6] hover:bg-[#2563EB] text-white p-2 rounded-lg transition-colors flex items-center justify-center shrink-0"
+                                    >
+                                        {copied ? (
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                            </svg>
+                                        ) : (
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                </div>
+
+                                {/* Social Icons */}
+                                <div className="flex items-center gap-3">
+                                    <a href="#" className="bg-white text-black p-3 rounded-xl hover:bg-gray-200 transition-colors shadow-lg border border-transparent hover:border-black/10">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6 fill-current">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" className="bg-[#1A1B4B] border border-white/20 p-3 rounded-xl hover:bg-[#0B0E23] transition-colors shadow-lg flex items-center justify-center">
+                                        <img src={dexscreenerIcon} alt="DexScreener" className="h-6 w-6" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {/* About Content */}
-                <div className="space-y-8">
-                    <div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">The Kevin Protocol</h2>
-                        <p className="text-gray-400 text-lg leading-relaxed">
-                            The infamous Kevin Home Alone project started as a mere experiment in the void. Now, it evolves into a fully autonomous digital entity observing holiday protocols.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                            <h3 className="text-2xl font-bold text-blue-400 mb-1">100%</h3>
-                            <p className="text-sm text-gray-400">On-Chain Data</p>
-                        </div>
-                        <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                            <h3 className="text-2xl font-bold text-purple-400 mb-1">2.4s</h3>
-                            <p className="text-sm text-gray-400">Transaction Speed</p>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-4 pt-4">
-                        <button className="flex-1 bg-white text-[#0B0E23] py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors">
-                            Read Whitepaper
-                        </button>
-                        <button className="flex-1 border border-white/20 text-white py-4 rounded-xl font-bold hover:bg-white/5 transition-colors">
-                            View Roadmap
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/10 pt-16">
-            <StatsItem value="30k+" label="Products" />
-            <StatsItem value="10k+" label="Auctions" />
-            <StatsItem value="12k+" label="Collections" />
-            <StatsItem value="20k+" label="Artists" />
-        </div>
-    </section>
-);
+            </Reveal>
+        </section>
+    );
+};
