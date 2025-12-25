@@ -1,8 +1,8 @@
 import { NFTCard } from "../components/ui/NFTCard";
 import { Reveal } from "../components/utils/Reveal";
-import hero1 from "../assets/hero/hero1.png";
-import hero2 from "../assets/hero/hero2.png";
-import hero3 from "../assets/hero/hero3.png";
+import hero1 from "../assets/hero/hero1.webp";
+import hero2 from "../assets/hero/hero2.webp";
+import hero3 from "../assets/hero/hero3.webp";
 
 export const HeroSection = () => (
     <section id="home" className="pt-16 pb-32 px-6 text-center max-w-5xl mx-auto relative">
